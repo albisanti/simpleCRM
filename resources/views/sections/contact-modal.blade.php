@@ -55,49 +55,49 @@
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Name</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->name}}">
+                <input type="text" class="form-control update ml-3" data-type="name" value="{{$rs->name}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Email</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->email}}">
+                <input type="text" class="form-control update ml-3" data-type="email" value="{{$rs->email}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">City</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->city}}">
+                <input type="text" class="form-control update ml-3" data-type="city" value="{{$rs->city}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Address</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->address}}">
+                <input type="text" class="form-control update ml-3" data-type="address" value="{{$rs->address}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Nation</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->nation}}">
+                <input type="text" class="form-control update ml-3" data-type="nation" value="{{$rs->nation}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">What they do</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->wtd}}">
+                <input type="text" class="form-control update ml-3" data-type="wtd" value="{{$rs->wtd}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Rating</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->rating}}">
+                <input type="text" class="form-control update ml-3" data-type="rating" value="{{$rs->rating}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Notes</span><br>
-                <input type="text" class="form-control ml-3" value="{{$rs->notes}}">
+                <input type="text" class="form-control update ml-3" data-type="notes" value="{{$rs->notes}}">
             </div>
         </div>
         <div class="row mt-4">

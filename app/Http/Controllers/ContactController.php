@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -29,13 +30,16 @@ class ContactController extends Controller
     }
 
     public function Suppliers(Request $request){
-        $contact = Contact::where('type','=','supplier');
+        $contact = DB::table('contacts')->whereRaw("type = 'supplier'");
         if(!empty($request->search)){
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->where('name', 'like', '%' . $item . '%')->orWhere('email', 'like', '%' . $item . '%')->orWhere('wtd', 'like', '%' . $item . '%')->orWhere('address', 'like', '%' . $item . '%')
-                        ->orWhere('city', 'like', '%' . $item . '%');
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                } else {
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -44,13 +48,16 @@ class ContactController extends Controller
     }
 
     public function Customers(Request $request){
-        $contact = Contact::where('type','=','customer');
+        $contact = DB::table('contacts')->whereRaw("type = 'customer'");
         if(!empty($request->search)){
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->where('name', 'like', '%' . $item . '%')->orWhere('email', 'like', '%' . $item . '%')->orWhere('wtd', 'like', '%' . $item . '%')->orWhere('address', 'like', '%' . $item . '%')
-                        ->orWhere('city', 'like', '%' . $item . '%');
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                    ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                } else {
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -62,6 +69,36 @@ class ContactController extends Controller
         if(!empty($request->id)){
             $contact = Contact::find($request->id);
             return response()->json(['status' => 'success', 'html' => view('sections.contact-modal',['rs' => $contact,'edit' => $request->edit == 'y'])->render()]);
+        }
+        return abort(404,'ID unavailable');
+    }
+
+    public function UpdateContact(Request $request){
+        if(!empty($request->datas['id'])){
+            $contact = Contact::find($request->datas['id']);
+            $contact->name = $request->datas['name'];
+            $contact->email = $request->datas['email'];
+            $contact->address = $request->datas['address'];
+            $contact->city = $request->datas['city'];
+            $contact->nation = $request->datas['nation'];
+            $contact->wtd = $request->datas['wtd'];
+            $contact->notes = $request->datas['notes'];
+            $contact->rating = $request->datas['rating'];
+            if($contact->save()){
+                return response()->json(['status' => 'success']);
+            }
+            return response()->json(['status' => 'error','report' => "Can't update the contact. Please retry in a few minutes"]);
+        }
+        return abort(404,'ID unavailable');
+    }
+
+    public function DeleteContact(Request $request){
+        if(!empty($request->id)){
+            $contact = Contact::find($request->id);
+            if($contact->delete()){
+                return response()->json(['status' => 'success']);
+            }
+            return response()->json(['status' => 'error','report' => "Can't delete the contact. Please retry in a few minutes"]);
         }
         return abort(404,'ID unavailable');
     }

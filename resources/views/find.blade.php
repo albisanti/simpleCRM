@@ -11,7 +11,7 @@
         width: 100vw;
         background-color: rgba(51,51,51,.7);
         position: absolute;
-        z-index: 9999;
+        z-index: 1010;
         display: none;
     }
 
@@ -132,15 +132,82 @@
                 if(res.data.status == 'success'){
                     $('#inside-html').html(res.data.html);
                     $('#showMore').show();
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: res.data.report,
+                        icon: "error",
+                        confirmButtonText: 'Ok'
+                    });
                 }
             }).catch(e => {
+                alert("Unexpected error");
                 console.log(e);
             });
        });
 
        $('.close-showMore').on("click",function (){
            $('#showMore').hide();
-       })
+       });
+
+       //TODO: Update
+        $('body').on("click",'#save',function (e){
+           let id = $(this).attr('data-id');
+           let datas = {
+               id: id
+           };
+
+           $('.update').each(function(){
+               datas[$(this).attr('data-type')] = $(this).val()
+           })
+
+           axios.post('/update',{
+               datas
+           }).then(res => {
+               if(res.data.status == 'success') {
+                   Swal.fire({
+                       title: 'Success!',
+                       text: "Contact updated succesfully!",
+                       icon: "success",
+                       confirmButtonText: 'Reload the page'
+                   });
+                   location.reload();
+               } else {
+                   Swal.fire({
+                       title: 'Error!',
+                       text: res.data.report,
+                       icon: "error",
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           }).catch(e => {
+               alert("Unexpected error");
+               console.log(e);
+           })
+        });
+
+        //Delete
+        $('.delete').on("click",function (){
+           let id = $(this).attr('data-id');
+           axios.post('/delete',{
+               id
+           }).then(res => {
+                if(res.data.status == 'success') {
+                    location.reload();
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: res.data.report,
+                        icon: "error",
+                        confirmButtonText: 'Ok'
+                    });
+                }
+           }).catch(e => {
+               alert("Unexpected error");
+               console.log(e);
+           })
+        });
+
 
     });
 </script>

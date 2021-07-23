@@ -22,6 +22,7 @@
 <script src="{{asset('js/bundle.js?ver=2.6.0')}}"></script>
 <script src="{{asset('js/scripts.js?ver=2.6.0')}}"></script>
 <!--<script src="{{asset('js/charts/chart-invest.js?ver=2.6.0')}}"></script>-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

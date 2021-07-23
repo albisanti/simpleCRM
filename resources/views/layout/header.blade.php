@@ -79,10 +79,16 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <div class="user-toggle">
                                         <div class="user-avatar sm">
-                                            <em class="icon ni ni-user-alt"></em>
+                                            @php
+                                                $exp = explode(' ',Auth::user()->name);
+                                                $initials = array(
+                                                    substr($exp[0],0,1),
+                                                    !empty($exp[1]) ? substr($exp[1],0,1) : substr($exp[0],1,1)
+                                                );
+                                                echo $initials[0].$initials[1]
+                                            @endphp
                                         </div>
                                         <div class="user-info d-none d-xl-block">
-                                            <div class="user-status user-status-unverified">Admin</div>
                                             <div class="user-name dropdown-indicator">{{Auth::user()->name}}</div>
                                         </div>
                                     </div>
@@ -91,7 +97,16 @@
                                     <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                         <div class="user-card">
                                             <div class="user-avatar">
-                                                <span>AB</span>
+                                                <span>
+                                                    @php
+                                                    $exp = explode(' ',Auth::user()->name);
+                                                    $initials = array(
+                                                        substr($exp[0],0,1),
+                                                        !empty($exp[1]) ? substr($exp[1],0,1) : substr($exp[0],1,1)
+                                                    );
+                                                    echo $initials[0].$initials[1]
+                                                    @endphp
+                                                </span>
                                             </div>
                                             <div class="user-info">
                                                 <span class="lead-text">{{Auth::user()->name}}</span>

@@ -1,6 +1,6 @@
 
 @if(!$edit)
-<div class="container-fluid px-5">
+<div class="container-fluid px-5 pb-5">
     <div class="row mt-3">
         <div class="col-12">
             <span class="h4">Name</span><br>
@@ -27,14 +27,14 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <span class="h4">Nation</span><br>
+            <span class="h4">Country</span><br>
             <span class="ml-3">{{$rs->nation}}</span>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col-12">
             <span class="h4">What they do</span><br>
-            <span class="ml-3">{{$rs->wtd}}</span>
+            <span class="ml-3">{{$rs->service->name}}</span>
         </div>
     </div>
     <div class="row mt-3">
@@ -51,7 +51,7 @@
     </div>
 </div>
 @else
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-5 pb-5">
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Name</span><br>
@@ -78,14 +78,16 @@
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <span class="h4">Nation</span><br>
+                <span class="h4">Country</span><br>
                 <input type="text" class="form-control update ml-3" data-type="nation" value="{{$rs->nation}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
-                <span class="h4">What they do</span><br>
-                <input type="text" class="form-control update ml-3" data-type="wtd" value="{{$rs->wtd}}">
+                <span class="h4">Service</span><br>
+                <select class="form-control update ml-3" data-type="wtd">
+                    {{!! $options !!}}
+                </select>
             </div>
         </div>
         <div class="row mt-4">

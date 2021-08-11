@@ -22,7 +22,9 @@
                                 @if(session('status'))
                                 <div class="row mt-3">
                                     <div class="col-12">
-                                        <em>An error has occured!</em> Please try again.
+                                        <div class="alert alert-danger">
+                                            <b>An error has occured!</b> Please try again.
+                                        </div>
                                     </div>
                                 </div>
                                 @endif
@@ -81,9 +83,9 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label class="form-label">Nation</label>
+                                            <label class="form-label">Country</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" placeholder="Nation" class="form-control" name="nation">
+                                                <input type="text" placeholder="Country" class="form-control" name="nation">
                                             </div>
                                         </div>
                                     </div>
@@ -91,9 +93,14 @@
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label">What they do</label>
+                                            <label class="form-label">Service</label>
                                             <div class="form-control-wrap">
-                                                <input type="text" placeholder="Write what they do" class="form-control" name="wtd">
+                                                <select name="wtd" class="form-control">
+                                                    <option value="">Select an option</option>
+                                                    @foreach($services as $service)
+                                                        <option value="{{$service->id}}">{{$service->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

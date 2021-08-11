@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\ContactExport;
 use App\Models\Contact;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -11,10 +12,14 @@ use Maatwebsite\Excel\Facades\Excel;
 class ContactController extends Controller
 {
     public function Add(Request $request){
-        return view('add');
+        $services = Service::get();
+        return view('add',['services' => $services]);
     }
 
     public function Create(Request $request){
+        if(empty($request->name) || empty($request->email)) {
+            return redirect('/add')->with('status','error');
+        }
         $contact = new Contact;
         $contact->type = $request->type;
         $contact->name = $request->name;
@@ -37,11 +42,11 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -55,11 +60,11 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                    ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -69,8 +74,15 @@ class ContactController extends Controller
 
     public function Query(Request $request){
         if(!empty($request->id)){
-            $contact = Contact::find($request->id);
-            return response()->json(['status' => 'success', 'html' => view('sections.contact-modal',['rs' => $contact,'edit' => $request->edit == 'y'])->render()]);
+            $contact = Contact::find($request->id)->with('service')->first();
+            $options = '<option value="">Select an option</option>';
+            if($request->edit == 'y') {
+                $services = Service::get();
+                foreach ($services as $service) {
+                    $options .= '<option value="'.$service->id.'" '.($service->id == $contact->wtd ? 'selected' : '').'>'.$service->name.'</option>';
+                }
+            }
+            return response()->json(['status' => 'success', 'html' => view('sections.contact-modal',['rs' => $contact,'edit' => $request->edit == 'y', 'options' => $options])->render()]);
         }
         return abort(404,'ID unavailable');
     }

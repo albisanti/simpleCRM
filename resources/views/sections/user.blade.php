@@ -1,6 +1,6 @@
 @if(!$new)
     @if(!$edit)
-        <div class="container-fluid px-5">
+        <div class="container-fluid px-5 pb-5">
             <div class="row mt-3">
                 <div class="col-12">
                     <span class="h4">Name</span><br>
@@ -49,7 +49,7 @@
             </div>
         </div>
     @else
-        <div class="container-fluid px-5">
+        <div class="container-fluid px-5 pb-5">
             <div class="row mt-4">
                 <div class="col-12">
                     <span class="h4">Name</span><br>
@@ -99,7 +99,7 @@
         </div>
     @endif
 @else
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-5 pb-5">
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Name</span><br>

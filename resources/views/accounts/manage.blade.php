@@ -37,7 +37,7 @@
         <div class="close-showMore">
             Close <em class="icon ni ni-cross"></em>
         </div>
-        <div id="inside-html" class="mt-5">
+        <div id="inside-html" class="mt-5 pb-3" style="height: 100%; overflow: scroll">
 
         </div>
     </div>

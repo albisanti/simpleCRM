@@ -30,10 +30,10 @@
                     </div>
                     <div class="nk-header-brand">
                         <a href="/" class="logo-link">
-                            <span class="nio-version">Dashboard</span>
-                            <!--
-                            <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                            <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                            <!--<span class="nio-version">Dashboard</span>-->
+
+                            <img class="logo-light logo-img" src="{{asset('images/logo.png')}}" alt="logo" style="filter: invert(1)">
+                            <!--<img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             <span class="nio-version">Invest</span>-->
                         </a>
                     </div><!-- .nk-header-brand -->
@@ -80,7 +80,7 @@
                             <li class="dropdown user-dropdown order-sm-first">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <div class="user-toggle">
-                                        <div class="user-avatar sm">
+                                        <div class="user-avatar sm" style="color: #333;">
                                             @php
                                                 $exp = explode(' ',Auth::user()->name);
                                                 $initials = array(
@@ -91,15 +91,15 @@
                                             @endphp
                                         </div>
                                         <div class="user-info d-none d-xl-block">
-                                            <div class="user-name dropdown-indicator">{{Auth::user()->name}}</div>
+                                            <div class="user-name dropdown-indicator" style="color: #cecece">{{Auth::user()->name}}</div>
                                         </div>
                                     </div>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 is-light">
-                                    <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 is-dark">
+                                    <div class="dropdown-inner user-card-wrap d-none d-md-block" style="background: #555;">
                                         <div class="user-card">
-                                            <div class="user-avatar">
-                                                <span>
+                                            <div class="user-avatar" style="color: #333">
+                                                <span style="color: #333">
                                                     @php
                                                     $exp = explode(' ',Auth::user()->name);
                                                     $initials = array(
@@ -111,8 +111,8 @@
                                                 </span>
                                             </div>
                                             <div class="user-info">
-                                                <span class="lead-text">{{Auth::user()->name}}</span>
-                                                <span class="sub-text">{{Auth::user()->email}}</span>
+                                                <span class="lead-text" style="color: #fff;">{{Auth::user()->name}}</span>
+                                                <span class="sub-text" style="color: #ccc;">{{Auth::user()->email}}</span>
                                             </div>
                                         </div>
                                     </div>

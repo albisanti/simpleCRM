@@ -88,6 +88,24 @@
                                         </div><!-- .card -->
                                     </div><!-- .col -->
                                     @endcan
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="nk-wg-card card card-bordered h-100">
+                                            <div class="card-inner h-50">
+                                                <div class="nk-iv-wg2">
+                                                    <!--<div class="nk-iv-wg2-title">
+                                                        <h6 class="title">Balance in Account</h6>
+                                                    </div>-->
+                                                    <div class="nk-iv-wg2-text">
+                                                        <div class="nk-iv-wg2-amount ui-v2">Add new service</div>
+                                                        Add a new service
+                                                    </div>
+                                                    <div class="nk-iv-wg2-cta">
+                                                        <a href="/services" class="btn btn-primary btn-lg btn-block">Add</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- .card -->
+                                    </div><!-- .col -->
                                 </div><!-- .row -->
                             </div><!-- .nk-block -->
                             <div class="nk-block">

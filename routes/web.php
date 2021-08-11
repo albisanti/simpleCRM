@@ -57,6 +57,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('settings',[\App\Http\Controllers\ProfileController::class,'showProfile']);
     Route::post('change-password',[\App\Http\Controllers\ProfileController::class,'changePassword']);
 
+    Route::get('services',[\App\Http\Controllers\PagesController::class,'showServices']);
+    Route::post('add-service',[\App\Http\Controllers\PagesController::class,'addService']);
+    Route::post('delete-service',[\App\Http\Controllers\PagesController::class,'deleteService']);
+
     Route::post('/create',[\App\Http\Controllers\ContactController::class,'Create']);
     Route::post('/query',[\App\Http\Controllers\ContactController::class,'Query']);
     Route::get('/logout',function (){

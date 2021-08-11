@@ -47,7 +47,7 @@
                             </div>
                             <div class="row text-right mt-3">
                                 <div class="col-12 text-right">
-                                    <span class="btn btn-danger" id="changePassword">Change password</span>
+                                    <span class="btn btn-danger" id="changePassword" style="background: darkred">Change password</span>
                                 </div>
                             </div>
                         </div>

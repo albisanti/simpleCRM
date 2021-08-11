@@ -64,11 +64,13 @@
                                     <span class="nk-menu-text">Customers</span>
                                 </a>
                             </li>
+                            @can('create')
                             <li class="nk-menu-item">
                                 <a href="/add" class="nk-menu-link">
                                     <span class="nk-menu-text">Add <i class="icon ni ni-plus"></i> </span>
                                 </a>
                             </li>
+                            @endcan
                         </ul>
                     </div><!-- .nk-header-menu -->
                     <div class="nk-header-tools">
@@ -117,7 +119,9 @@
                                     <div class="dropdown-inner">
                                         <ul class="link-list">
                                             <li><a href="/settings"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
+                                            @can('manage_users')
                                             <li><a href="/manage-account"><em class="icon ni ni-users"></em><span>Manage Accounts</span></a></li>
+                                            @endcan
                                         </ul>
                                     </div>
                                     <div class="dropdown-inner">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ContactExport;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ContactController extends Controller
 {
@@ -44,7 +46,7 @@ class ContactController extends Controller
             }
         }
         $suppliers = $contact->get();
-        return view('find',['type' => 'customer', 'rs' => $suppliers,'search' => $request->search]);
+        return view('find',['type' => 'supplier', 'rs' => $suppliers,'search' => $request->search]);
     }
 
     public function Customers(Request $request){
@@ -102,4 +104,24 @@ class ContactController extends Controller
         }
         return abort(404,'ID unavailable');
     }
+
+    public function export(Request $request){
+        $contact = DB::table('contacts')->whereRaw("type = ?",[$request->type]);
+        if(!empty($request->search)){
+            $exp = explode(' ',$request->search);
+            foreach ($exp as $k => $item) {
+                if($k === 0) {
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                } else {
+                    $contact->whereRaw('(name like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                }
+            }
+        }
+        $suppliers = $contact->select(['id','type','name','email','address','city','nation','wtd','notes'])->get();
+
+        return Excel::download(new ContactExport($suppliers),$request->type.'.xlsx');
+    }
+
 }

@@ -51,7 +51,16 @@
                     <div class="nk-block-head-content">
                         <div class="nk-block-head-sub"><a href="/" class="back-to"><em class="icon ni ni-arrow-left"></em><span>Back to Home</span></a></div>
                         <div class="nk-block-head-content">
-                            <h2 class="nk-block-title fw-normal">Search {{$type}}</h2>
+                            <div class="row">
+                                <div class="col-8">
+                                    <h2 class="nk-block-title fw-normal">Search {{$type}}</h2>
+                                </div>
+                                @can('export')
+                                <div class="col-4 text-right">
+                                    <span class="btn btn-primary" data-url="{{$type}}" id="export">Export</span>
+                                </div>
+                                @endcan
+                            </div>
                         </div>
                     </div>
                 </div><!-- nk-block-head -->
@@ -63,7 +72,7 @@
                                     <form method="GET" action="/{{$type}}s/">
                                         <div class="form-control-wrap">
                                             <div class="input-group">
-                                                <input type="search" class="form-control" placeholder="Search {{$type}}" name="search" value="{{$search}}">
+                                                <input type="search" class="form-control" placeholder="Search {{$type}}" name="search" id="search" value="{{$search}}">
                                                 <div class="input-group-append">
                                                     <button type="submit" class="btn btn-primary">SEARCH</button>
                                                 </div>
@@ -96,8 +105,12 @@
                                                 <small>{{$item->address}}</small>
                                             </td>
                                             <td class="text-right">
+                                                @can('delete')
                                                 <em data-id="{{$item->id}}" class="icon ni ni-trash-fill delete" data-toggle="tooltip" data-placement="top" title="Delete" style="font-size: 22px"></em>
+                                                @endcan
+                                                @can('create')
                                                 <i data-id="{{$item->id}}" data-edit="y" class="ni ni-edit-alt pointer details" data-toggle="tooltip" data-placement="top" title="Edit" style="font-size: 18px"></i>
+                                                @endcan
                                                 <em data-id="{{$item->id}}" data-edit="n" class="icon ni ni-arrow-right-circle-fill details" data-toggle="tooltip" data-placement="top" title="Show more" style="font-size: 22px"></em>
                                             </td>
                                         </tr>
@@ -121,6 +134,12 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     $(document).ready(function(){
+
+        $('#export').on("click",function (){
+            let urlType = $(this).attr('data-url');
+            location.href = '/export/'+urlType+'?search='+$('#search').val();
+        });
+
        $('.details').on("click",function (){
            let id = $(this).attr('data-id');
            let edit = $(this).attr('data-edit');
@@ -150,7 +169,6 @@
            $('#showMore').hide();
        });
 
-       //TODO: Update
         $('body').on("click",'#save',function (e){
            let id = $(this).attr('data-id');
            let datas = {

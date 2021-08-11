@@ -51,7 +51,14 @@
                     <div class="nk-block-head-content">
                         <div class="nk-block-head-sub"><a href="/" class="back-to"><em class="icon ni ni-arrow-left"></em><span>Back to Home</span></a></div>
                         <div class="nk-block-head-content">
-                            <h2 class="nk-block-title fw-normal">Manage account</h2>
+                            <div class="row">
+                                <div class="col-8">
+                                    <h2 class="nk-block-title fw-normal">Manage account</h2>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span class="btn btn-primary" id="addNewUser">Add</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div><!-- nk-block-head -->
@@ -72,7 +79,6 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Created at</th>
-                                        <th scope="col">Role</th>
                                         <th scope="col"></th>
                                     </tr>
                                     </thead>
@@ -84,13 +90,12 @@
                                             <td>
                                                 {{$item->created_at}}
                                             </td>
-                                            <th scope="row">
-                                                Role
-                                            </th>
                                             <td class="text-right">
+                                                @if(\Illuminate\Support\Facades\Auth::user()->id !== $item->id)
                                                 <em data-id="{{$item->id}}" class="icon ni ni-trash-fill delete" data-toggle="tooltip" data-placement="top" title="Delete" style="font-size: 22px"></em>
                                                 <i data-id="{{$item->id}}" data-edit="y" class="ni ni-edit-alt pointer details" data-toggle="tooltip" data-placement="top" title="Edit" style="font-size: 18px"></i>
                                                 <em data-id="{{$item->id}}" data-edit="n" class="icon ni ni-arrow-right-circle-fill details" data-toggle="tooltip" data-placement="top" title="Show more" style="font-size: 22px"></em>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -113,12 +118,10 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('.details').on("click",function (){
-            let id = $(this).attr('data-id');
-            let edit = $(this).attr('data-edit');
+
+        $('#addNewUser').on("click",function (){
             axios.post('/account-detail',{
-                id,
-                edit
+                new: true
             }).then(res => {
                 console.log(res);
                 if(res.data.status == 'success'){
@@ -130,9 +133,83 @@
             });
         });
 
+        $('.details').on("click",function (){
+            let id = $(this).attr('data-id');
+            let edit = $(this).attr('data-edit');
+            axios.post('/account-detail',{
+                id,
+                edit,
+                new: false
+            }).then(res => {
+                console.log(res);
+                if(res.data.status == 'success'){
+                    $('#inside-html').html(res.data.html);
+                    $('#showMore').show();
+                }
+            }).catch(e => {
+                console.log(e);
+            });
+        });
+
+        $('.delete').on("click",function (){
+            let id = $(this).attr('data-id');
+            axios.post('/delete-account',{
+                id
+            }).then(res => {
+                console.log(res);
+                if(res.data.status == 'success'){
+                    location.reload();
+                }
+            }).catch(e => {
+                console.log(e);
+            });
+        });
+
         $('.close-showMore').on("click",function (){
             $('#showMore').hide();
         })
+
+        $('body').on("click",'#saveNew',function (){
+            axios.post('/create-account',{
+                name: $('#name').val(),
+                email: $('#email').val(),
+                password: $('#password').val(),
+                delete: $('#delete').is(':checked') ? 'y' : 'n',
+                create: $('#add').is(':checked') ? 'y' : 'n',
+                export: $('#export').is(':checked') ? 'y' : 'n'
+            }).then(res => {
+                if(res.data.status == 'success') {
+                    location.reload();
+                } else {
+                    alert("Error while creating a new User. Please try again in a few seconds");
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            })
+        });
+
+        $('body').on("click",'#save',function (){
+            let id = $(this).attr('data-id');
+            axios.post('/edit-account',{
+                id,
+                name: $('#name').val(),
+                email: $('#email').val(),
+                password: $('#password').val(),
+                delete: $('#delete').is(':checked') ? 'y' : 'n',
+                create: $('#add').is(':checked') ? 'y' : 'n',
+                export: $('#export').is(':checked') ? 'y' : 'n'
+            }).then(res => {
+                if(res.data.status == 'success') {
+                    location.reload();
+                } else {
+                    alert("Error while creating a new User. Please try again in a few seconds");
+                }
+            })
+                .catch(e => {
+                    console.log(e);
+                })
+        });
 
     });
 </script>

@@ -41,6 +41,11 @@
                                     </div>
                                 </div>
                             </div>
+                            @if(session('setup'))
+                            <div class="alert alert-success">
+                                Setup accomplished. Please login with the credential that the developer sent you.
+                            </div>
+                            @endif
                             <form action="/login" method="POST">
                                 @csrf
                                 <div class="form-group">

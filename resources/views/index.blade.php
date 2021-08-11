@@ -16,6 +16,7 @@
                                             </div>
                                         </div>
                                         <div class="nk-block-des">
+                                        <div class="nk-block-des">
                                             <p>Select what are you looking for and find what you need</p>
                                         </div>
                                     </div><!-- .nk-block-head-content -->
@@ -67,6 +68,7 @@
                                             </div>
                                         </div><!-- .card -->
                                     </div><!-- .col -->
+                                    @can('create')
                                     <div class="col-md-6 col-lg-4">
                                         <div class="nk-wg-card card card-bordered h-100">
                                             <div class="card-inner h-50">
@@ -85,6 +87,7 @@
                                             </div>
                                         </div><!-- .card -->
                                     </div><!-- .col -->
+                                    @endcan
                                 </div><!-- .row -->
                             </div><!-- .nk-block -->
                             <div class="nk-block">

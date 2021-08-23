@@ -50,7 +50,7 @@ class ContactController extends Controller
                 }
             }
         }
-        $suppliers = $contact->get();
+        $suppliers = $contact->paginate(30);
         return view('find',['type' => 'supplier', 'rs' => $suppliers,'search' => $request->search]);
     }
 
@@ -68,7 +68,7 @@ class ContactController extends Controller
                 }
             }
         }
-        $suppliers = $contact->get();
+        $suppliers = $contact->paginate(30);
         return view('find',['type' => 'customer', 'rs' => $suppliers,'search' => $request->search]);
     }
 

@@ -17,7 +17,9 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->enum('type',['supplier','customer']);
             $table->string('name');
+            $table->string('company_name');
             $table->string('email');
+            $table->string('email2');
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('nation')->nullable();

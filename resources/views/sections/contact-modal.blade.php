@@ -9,8 +9,20 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
+            <span class="h4">Company name</span><br>
+            <span class="ml-3">{{$rs->company_name}}</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
             <span class="h4">Email</span><br>
             <span class="ml-3">{{$rs->email}}</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <span class="h4">Email 2</span><br>
+            <span class="ml-3">{{$rs->email2}}</span>
         </div>
     </div>
     <div class="row mt-3">
@@ -34,7 +46,7 @@
     <div class="row mt-3">
         <div class="col-12">
             <span class="h4">What they do</span><br>
-            <span class="ml-3">{{$rs->service->name}}</span>
+            <span class="ml-3">{{$rs->service->name ?? ''}}</span>
         </div>
     </div>
     <div class="row mt-3">
@@ -60,8 +72,20 @@
         </div>
         <div class="row mt-4">
             <div class="col-12">
+                <span class="h4">Company name</span><br>
+                <input type="text" class="form-control update ml-3" data-type="name" value="{{$rs->company_name}}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
                 <span class="h4">Email</span><br>
                 <input type="text" class="form-control update ml-3" data-type="email" value="{{$rs->email}}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <span class="h4">Email 2</span><br>
+                <input type="text" class="form-control update ml-3" data-type="email" value="{{$rs->email2}}">
             </div>
         </div>
         <div class="row mt-4">

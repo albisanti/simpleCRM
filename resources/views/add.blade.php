@@ -55,9 +55,29 @@
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="form-group">
+                                            <label class="form-label">Company name</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" placeholder="Company name" class="form-control" name="company_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="form-group">
                                             <label class="form-label">Email*</label>
                                             <div class="form-control-wrap">
                                                 <input type="email" placeholder="email@placeholder.com" class="form-control" name="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Email 2</label>
+                                            <div class="form-control-wrap">
+                                                <input type="email" placeholder="email@placeholder.com" class="form-control" name="email2">
                                             </div>
                                         </div>
                                     </div>

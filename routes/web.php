@@ -19,7 +19,7 @@ Route::get('test', function () {
     if(count($perm) === 0) {
         $user = new \App\Models\User;
         $user->email = 'admin@admin.com';
-        $user->name = 'Alberto Dev';
+        $user->name = 'Admin';
         $user->password = Hash::make('test123');
         $user->save();
         \Spatie\Permission\Models\Permission::create(['name' => 'delete']);

@@ -12,7 +12,7 @@
                                         <div class="nk-block-head-sub"><span>Welcome!</span></div>
                                         <div class="align-center flex-wrap pb-2 gx-4 gy-3">
                                             <div>
-                                                <h2 class="nk-block-title fw-normal">Alberto Dev</h2>
+                                                <h2 class="nk-block-title fw-normal">{{Auth::user()->name}}</h2>
                                             </div>
                                         </div>
                                         <div class="nk-block-des">
@@ -125,7 +125,7 @@
                                                         <em class="icon ni ni-mail"></em>
                                                     </div>
                                                     <!--<input type="text" class="form-control copy-text" id="refUrl" value="bisanti.alberto.dev@gmail.com">-->
-                                                    <input type="text" class="form-control copy-text" id="refUrl" value="•••••.•••••.•••••@•••••.•••">
+                                                    <input type="text" class="form-control copy-text" id="refUrl" value="bisanti.alberto.dev@gmail.com">
                                                 </div>
                                             </div>
                                         </div>

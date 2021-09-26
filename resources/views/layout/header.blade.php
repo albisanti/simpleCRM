@@ -22,7 +22,7 @@
     <!-- wrap @s -->
     <div class="nk-wrap ">
         <!-- main header @s -->
-        <div class="nk-header nk-header-fluid nk-header-fixed is-theme">
+        <div class="nk-header nk-header-fluid nk-header-fixed is-light" style="background-color: #f3f3f3;border-bottom: 1px solid #333;">
             <div class="container-xl wide-lg">
                 <div class="nk-header-wrap">
                     <div class="nk-menu-trigger mr-sm-2 d-lg-none">
@@ -32,7 +32,7 @@
                         <a href="/" class="logo-link">
                             <!--<span class="nio-version">Dashboard</span>-->
 
-                            <img class="logo-light logo-img" src="{{asset('images/logo.png')}}" alt="logo" style="filter: invert(1)">
+                            <img class="logo-img" src="{{asset('images/logo.png')}}" alt="logo">
                             <!--<img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
                             <span class="nio-version">Invest</span>-->
                         </a>
@@ -91,7 +91,7 @@
                                             @endphp
                                         </div>
                                         <div class="user-info d-none d-xl-block">
-                                            <div class="user-name dropdown-indicator" style="color: #cecece">{{Auth::user()->name}}</div>
+                                            <div class="user-name dropdown-indicator">{{Auth::user()->name}}</div>
                                         </div>
                                     </div>
                                 </a>

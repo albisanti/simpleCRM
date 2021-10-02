@@ -41,15 +41,15 @@ class ContactController extends Controller
     }
 
     public function Suppliers(Request $request){
-        $contact = DB::table('contacts')->whereRaw("type = 'supplier'");
+        $contact = DB::table('contacts')->select(['id','name','telephone','email2','email','address','city','notes','company_name'])->whereRaw("type = 'supplier'");
         if(!empty($request->search)){
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    $contact->whereRaw('(name like ? or company_name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
                         ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    $contact->whereRaw('(name like ? or company_name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
                         ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
@@ -64,10 +64,10 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    $contact->whereRaw('(name like ? or company_name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
                     ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    $contact->whereRaw('(name like ? or company_name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
                         ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }

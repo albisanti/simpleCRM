@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            @if($rs)
+                            @if(count($rs)>0)
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
@@ -125,7 +125,7 @@
                                     <em>No {{$type}}s has been found!</em> Please check that "<b>{{$search}}</b>" is correct.
                                 </div>
                             @endif
-                            {{$rs->links('layout.pagination')}}
+                            {{--$rs->links('layout.pagination')--}}
                         </div>
                     </div>
                 </div><!-- .nk-block -->

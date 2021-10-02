@@ -27,8 +27,20 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
+            <span class="h4">Telephone</span><br>
+            <span class="ml-3">{{$rs->telephone}}</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
             <span class="h4">City</span><br>
             <span class="ml-3">{{$rs->city}}</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <span class="h4">Zip Code</span><br>
+            <span class="ml-3">{{$rs->zip_code}}</span>
         </div>
     </div>
     <div class="row mt-3">
@@ -45,7 +57,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <span class="h4">What they do</span><br>
+            <span class="h4">Service</span><br>
             <span class="ml-3">{{$rs->service->name ?? ''}}</span>
         </div>
     </div>
@@ -73,7 +85,7 @@
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Company name</span><br>
-                <input type="text" class="form-control update ml-3" data-type="name" value="{{$rs->company_name}}">
+                <input type="text" class="form-control update ml-3" data-type="company_name" value="{{$rs->company_name}}">
             </div>
         </div>
         <div class="row mt-4">
@@ -85,13 +97,25 @@
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">Email 2</span><br>
-                <input type="text" class="form-control update ml-3" data-type="email" value="{{$rs->email2}}">
+                <input type="text" class="form-control update ml-3" data-type="email2" value="{{$rs->email2}}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <span class="h4">Telephone</span><br>
+                <input type="text" class="form-control update ml-3" data-type="telephone" value="{{$rs->telephone}}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col-12">
                 <span class="h4">City</span><br>
                 <input type="text" class="form-control update ml-3" data-type="city" value="{{$rs->city}}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <span class="h4">Zip Code</span><br>
+                <input type="text" class="form-control update ml-3" data-type="zip_code" value="{{$rs->zip_code}}">
             </div>
         </div>
         <div class="row mt-4">

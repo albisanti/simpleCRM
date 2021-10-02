@@ -26,8 +26,10 @@ class ContactController extends Controller
         $contact->company_name = $request->company_name;
         $contact->email = $request->email;
         $contact->email2 = $request->email2;
+        $contact->telephone = $request->telephone;
         $contact->address = $request->address;
         $contact->city = $request->city;
+        $contact->zip_code = $request->zip_code;
         $contact->nation = $request->nation;
         $contact->wtd = $request->wtd;
         $contact->notes = $request->notes;
@@ -44,11 +46,11 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or company_mail like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or company_mail like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -62,11 +64,11 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or company_mail like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
-                    ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                    ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or company_mail like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ? or notes like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }
@@ -76,7 +78,7 @@ class ContactController extends Controller
 
     public function Query(Request $request){
         if(!empty($request->id)){
-            $contact = Contact::find($request->id)->with('service')->first();
+            $contact = Contact::where('id',$request->id)->with('service')->first();
             $options = '<option value="">Select an option</option>';
             if($request->edit == 'y') {
                 $services = Service::get();
@@ -96,8 +98,10 @@ class ContactController extends Controller
             $contact->company_name = $request->datas['company_name'];
             $contact->email = $request->datas['email'];
             $contact->email2 = $request->datas['email2'];
+            $contact->telephone = $request->datas['telephone'];
             $contact->address = $request->datas['address'];
             $contact->city = $request->datas['city'];
+            $contact->zip_code = $request->datas['zip_code'];
             $contact->nation = $request->datas['nation'];
             $contact->wtd = $request->datas['wtd'];
             $contact->notes = $request->datas['notes'];
@@ -127,11 +131,11 @@ class ContactController extends Controller
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
                 if($k === 0) {
-                    $contact->whereRaw('(name like ? or company_name = ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or company_name = ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 } else {
-                    $contact->whereRaw('(name like ? or company_name = ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ?)',
-                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
+                    $contact->whereRaw('(name like ? or telephone like ? or company_name = ? or email2 like ? or email like ? or wtd like ? or address like ? or city like ?)',
+                        ['%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%','%'.$item.'%']);
                 }
             }
         }

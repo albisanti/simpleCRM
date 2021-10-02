@@ -26,6 +26,8 @@ class CreateContactsTable extends Migration
             $table->string('wtd')->nullable();
             $table->text('notes')->nullable();
             $table->integer('rating')->nullable();
+            $table->string('telephone')->nullable();
+            $table->string('zip_code')->nullable();
             $table->timestamps();
         });
     }

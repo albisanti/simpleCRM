@@ -82,6 +82,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Telephone</label>
+                                                <div class="form-control-wrap">
+                                                    <input type="text" placeholder="Telephone number" class="form-control" name="telephone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <div class="form-group">
@@ -93,7 +103,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-8">
+                                    <div class="col-md-8 col-12">
                                         <div class="form-group">
                                             <label class="form-label">City</label>
                                             <div class="form-control-wrap">
@@ -101,11 +111,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="form-label">Country</label>
                                             <div class="form-control-wrap">
                                                 <input type="text" placeholder="Country" class="form-control" name="nation">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="form-label">ZIP Code</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" placeholder="Country" class="form-control" name="zip_code">
                                             </div>
                                         </div>
                                     </div>

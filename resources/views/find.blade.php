@@ -98,7 +98,10 @@
                                     @foreach($rs as $k => $item)
                                         <tr>
                                             <th scope="row">{{$k+1}}</th>
-                                            <td>{{$item->name}}</td>
+                                            <td>
+                                                {{$item->name}}<br>
+                                                <small class="text-muted">{{$item->company_name}}</small>
+                                            </td>
                                             <td>{{$item->email}}</td>
                                             <td>
                                                 {{$item->city}}<br>

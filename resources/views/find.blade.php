@@ -125,7 +125,7 @@
                                     <em>No {{$type}}s has been found!</em> Please check that "<b>{{$search}}</b>" is correct.
                                 </div>
                             @endif
-                            {{--$rs->links('layout.pagination')--}}
+                            {{$rs->links('layout.pagination')}}
                         </div>
                     </div>
                 </div><!-- .nk-block -->

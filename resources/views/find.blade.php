@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            @if(count($rs)>0)
+                            @if($rs->count())
                             <table class="table table-hover">
                                 <thead>
                                 <tr>

@@ -104,8 +104,13 @@
                                         <tr>
                                             <th scope="row">{{$k+1}}</th>
                                             <td>
+                                                @if ($type=='customer')
                                                 {{$item->name}}<br>
                                                 <small class="text-muted">{{$item->company_name}}</small>
+                                                @else
+                                                {{$item->company_name}}<br>
+                                                <small class="text-muted">{{$item->name}}</small>
+                                                @endif
                                             </td>
                                             <td>
                                                 {{$item->email}} <br>

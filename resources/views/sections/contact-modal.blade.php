@@ -27,6 +27,12 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
+            <span class="h4">Website</span><br>
+            <span class="ml-3">{{$rs->website}}</span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
             <span class="h4">Telephone</span><br>
             <span class="ml-3">{{$rs->telephone}}</span>
         </div>
@@ -98,6 +104,12 @@
             <div class="col-12">
                 <span class="h4">Email 2</span><br>
                 <input type="text" class="form-control update ml-3" data-type="email2" value="{{$rs->email2}}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <span class="h4">Website</span><br>
+                <input type="text" class="form-control update ml-3" data-type="website" value="{{$rs->website}}">
             </div>
         </div>
         <div class="row mt-4">

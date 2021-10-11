@@ -82,6 +82,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Website</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" placeholder="website.com" class="form-control" name="website">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <div class="form-group">

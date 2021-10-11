@@ -26,6 +26,7 @@ class ContactController extends Controller
         $contact->company_name = $request->company_name;
         $contact->email = $request->email;
         $contact->email2 = $request->email2;
+        $contact->website = $request->website;
         $contact->telephone = $request->telephone;
         $contact->address = $request->address;
         $contact->city = $request->city;
@@ -41,7 +42,7 @@ class ContactController extends Controller
     }
 
     public function Suppliers(Request $request){
-        $contact = DB::table('contacts')->select(['id','name','telephone','email2','email','address','city','notes','company_name'])->whereRaw("type = 'supplier'");
+        $contact = DB::table('contacts')->select(['id','name','telephone','email2','email','website','address','city','notes','company_name'])->whereRaw("type = 'supplier'");
         if(!empty($request->search)){
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
@@ -59,7 +60,7 @@ class ContactController extends Controller
     }
 
     public function Customers(Request $request){
-        $contact = DB::table('contacts')->whereRaw("type = 'customer'");
+        $contact = DB::table('contacts')->select(['id','name','telephone','email2','email','website','address','city','notes','company_name'])->whereRaw("type = 'customer'");
         if(!empty($request->search)){
             $exp = explode(' ',$request->search);
             foreach ($exp as $k => $item) {
@@ -98,6 +99,7 @@ class ContactController extends Controller
             $contact->company_name = $request->datas['company_name'];
             $contact->email = $request->datas['email'];
             $contact->email2 = $request->datas['email2'];
+            $contact->website = $request->datas['website'];
             $contact->telephone = $request->datas['telephone'];
             $contact->address = $request->datas['address'];
             $contact->city = $request->datas['city'];

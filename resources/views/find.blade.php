@@ -30,6 +30,11 @@
         right: 20px;
         cursor: pointer;
     }
+
+    a{
+        text-decoration: underline;
+    }
+
 </style>
 
 <div id="showMore">
@@ -102,7 +107,14 @@
                                                 {{$item->name}}<br>
                                                 <small class="text-muted">{{$item->company_name}}</small>
                                             </td>
-                                            <td>{{$item->email}}</td>
+                                            <td>
+                                                {{$item->email}} <br>
+                                                @if (strpos($item->website,'http') !== false)
+                                                <a class="text-muted" href="{{$item->website}}" target="_blank">{{$item->website}}</a>
+                                                @else
+                                                <a class="text-muted" href="http://{{$item->website}}" target="_blank">{{$item->website}}</a>
+                                                @endif
+                                            </td>
                                             <td>
                                                 {{$item->city}}<br>
                                                 <small>{{$item->address}}</small>
